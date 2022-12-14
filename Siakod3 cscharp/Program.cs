@@ -1,4 +1,6 @@
-﻿class Program
+﻿using System.Collections.Specialized;
+
+class Program
 {
     static void Main(string[] args)
     {
@@ -6,17 +8,19 @@
         int sizeTab = 26;
         int[] TabOfChisla = new int[sizeTab];
 
-
+        int tmp = 0;
 
         for (int i = 0; i < sizeTab; i++)
         {
-            int tmp = rnd.Next(10, 99);
-            for (int j = 0; j <= i; ++j)
+            tmp = rnd.Next(10, 99);
+            for (int j = 0; j < i; ++j)
             {
-
+                
                 if (TabOfChisla[j] == tmp)
                 {
-                    tmp = rnd.Next(10, 99);
+                   
+                    tmp = rnd.Next(10, 100);
+                   
                 }
 
             }
@@ -35,9 +39,14 @@
         for (int i = 0; i < sizeTab; i++) {
             tree.Add(TabOfChisla[i]);
         }
-
+     
+       
+        Console.WriteLine();
         tree.Print(tree.root, 0);
+        Console.WriteLine();
         tree.DisplayTree();
+
+
     }
 }
 class GoodBalancedTree
@@ -148,16 +157,17 @@ class GoodBalancedTree
     {
         if (current != null)
         {
+
+
+      
+
+            InOrderDisplayTree(current.left);
+           
+           
+            InOrderDisplayTree(current.right);
             Console.Write(current.Value);
             Console.Write(' ');
-            InOrderDisplayTree(current.left);
 
-            InOrderDisplayTree(current.right);
-            
-            //InOrderDisplayTree(current.left);
-            //InOrderDisplayTree(current.right);
-            //Console.Write(current.Value);
-            //Console.Write(' ');
 
         }
     }
